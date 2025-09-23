@@ -318,7 +318,7 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="bg-white p-8 rounded-lg shadow-lg animate-on-scroll card-hover-effect">
                     <h3 class="text-2xl font-bold mb-4">Envíanos un mensaje</h3>
-                    <form id="contact-form" class="space-y-4">
+                    <form action="https://formspree.io/f/xzzjpalj" method="POST" class="space-y-4">
                         <input type="text" id="name" name="name" placeholder="Tu Nombre" class="w-full p-3 border rounded-md focus:ring focus:ring-blue-200" required>
                         <input type="email" id="email" name="email" placeholder="Tu Email" class="w-full p-3 border rounded-md focus:ring focus:ring-blue-200" required>
                         <input type="tel" id="phone" name="phone" placeholder="Tu Teléfono" class="w-full p-3 border rounded-md focus:ring focus:ring-blue-200">
@@ -557,12 +557,12 @@
 
                 // Contact Section
                 document.querySelector('#contacto h2').textContent = elements[lang].contactTitle;
-                document.querySelector('#contact-form').previousElementSibling.textContent = elements[lang].formTitle;
+                document.querySelector('h3:has(+ form)').textContent = elements[lang].formTitle;
                 document.getElementById('name').placeholder = elements[lang].namePlaceholder;
                 document.getElementById('email').placeholder = elements[lang].emailPlaceholder;
                 document.getElementById('phone').placeholder = elements[lang].phonePlaceholder;
                 document.getElementById('message').placeholder = elements[lang].messagePlaceholder;
-                document.querySelector('#contact-form button').textContent = elements[lang].submitBtn;
+                document.querySelector('form button[type="submit"]').textContent = elements[lang].submitBtn;
                 document.querySelector('#contacto h3:last-of-type').textContent = elements[lang].infoTitle;
                 
                 // Actualizar los elementos de la lista de contacto
@@ -583,18 +583,6 @@
                 updateContent(currentLang);
             });
             
-            // Lógica para el formulario de contacto (simulación de envío)
-            const contactForm = document.getElementById('contact-form');
-            const formMessage = document.getElementById('form-message');
-
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                formMessage.textContent = elements[currentLang].successMsg;
-                formMessage.classList.remove('hidden');
-                formMessage.classList.add('text-green-600');
-                contactForm.reset();
-            });
-
             // --- Nuevas funciones para animaciones y navegación ---
             
             // Función para detectar la visibilidad de elementos al desplazarse
